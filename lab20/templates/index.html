@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Кошик покупок</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="block">
+        <h1>Кошик покупок</h1>
+        <ul>
+            {% for item in cart %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <form action="/add-to-cart" method="post">
+        <h2>Додати товар до кошика</h2>
+        <input type="text" name="item" placeholder="Назва товару" required>
+        <input type="submit" value="Додати">
+    </form>
+    
+    <form action="/remove-from-cart" method="post">
+        <h2>Видалити товар з кошика</h2>
+        <input type="text" name="item" placeholder="Назва товару" required>
+        <input type="submit" value="Видалити">
+    </form>
+</body>
+</html>
